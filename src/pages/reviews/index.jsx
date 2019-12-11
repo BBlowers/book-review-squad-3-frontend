@@ -39,8 +39,8 @@ const Reviews = ({ url }) => {
   return reviews && (
     <Container className={classes.cardGrid} maxWidth="md">
       <Grid container spacing={4}>
-        {reviews.map(card => (
-          <Grid item key={card} xs={12} sm={6} md={4}>
+        {reviews.map((card, i) => (
+          <Grid item key={card} key={i} xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">

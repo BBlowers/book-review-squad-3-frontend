@@ -42,8 +42,8 @@ const Books = () => {
       </div>
       <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
-          {books.map(card => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
+          {books.map((card, i) => (
+            <Grid key={i} item key={card} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
