@@ -20,7 +20,7 @@ export const apiFetch = (url, method = 'GET', payload) => {
   return window.fetch(`http://api:9000/${url}`, params)
 }
 
-export const fakeRequest = (url, json) => {
+export const fakeRequest = (url, method, json) => {
   return new Promise((resolve) => {
     setTimeout(() => resolve({ json: () => json }), 200)
   })

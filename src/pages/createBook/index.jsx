@@ -37,8 +37,8 @@ export default function SignUp() {
     ISBN: ''
   })
   const handleChange = (key) => e => setBook({ ...book, [key]: e.target.value })
-  const saveBook = () => { // todo: handle
-    apiFetch('/book', 'POST', book).then(res => res.json()).then((json) => { // todo: POST
+  const saveBook = () => {
+    apiFetch('/book', 'POST', book).then(res => res.json()).then((json) => {
       history.push('/')
     })
 

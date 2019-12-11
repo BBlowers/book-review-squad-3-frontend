@@ -1,26 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import PageWrapper from '../../components/pageWrapper'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import CardActions from '@material-ui/core/CardActions'
 import useStyles from '../../styles'
-import { fakeRequest } from '../../apiFetch'
-
+import { apiFetch } from '../../apiFetch'
 
 const fakeReviews = [{ text: '1' }, { text: '2' }, { text: '3' }, { text: '4' }, { text: '5' }, { text: '6' }, { text: '7' }, { text: '8' }];
 
-const Reviews = () => {
+const Likes = ({ reviewId }) => {
+  const [likes, setLikes] = useState(null)
+
+  useEffect(() => {
+    apiFetch(`/book/review/${reviewId}/like`).then(res => res.json()).then((json) => {
+      setLikes(json)
+    })
+  })
+
+  return likes !== null && (
+    <span style={{ float: 'right' }}>
+      {likes}
+    </span>
+  )
+}
+
+const Reviews = ({ url }) => {
   const params = useParams()
   const classes = useStyles()
   const [reviews, setReviews] = useState(null)
 
-  useEffect(() => { // todo: handle
-    fakeRequest(`book/${params.id}/reviews`, fakeReviews).then(res => res.json()).then((json) => {
+  useEffect(() => {
+    apiFetch(url).then(res => res.json()).then((json) => {
       setReviews(json)
     })
   })
@@ -32,9 +44,7 @@ const Reviews = () => {
             <Card className={classes.card}>
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
-                  <span style={{ float: 'right' }}>
-                      Rating
-                  </span>
+                  <Likes reviewId={card.id} />
                 </Typography>
                 <Typography style={{ width: '100%' }}>
                   {card.text}

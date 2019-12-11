@@ -7,10 +7,8 @@ import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import useStyles from '../../styles'
-import { apiFetch, fakeRequest } from '../../apiFetch'
+import { apiFetch } from '../../apiFetch'
 import Button from '@material-ui/core/Button'
-
-const fakeBooks = [{name: `name-${1}`, ISBN: 1, author: 'ben', publish_date: 'test'}, {name: `name-${2}`, ISBN: 2, author: 'ben', publish_date: 'test'}, {name: `name-${3}`, ISBN: 3, author: 'ben', publish_date: 'test'}, {name: `name-${4}`, ISBN: 4, author: 'ben', publish_date: 'test'}, {name: `name-${5}`, ISBN: 5, author: 'ben', publish_date: 'test'}, {name: `name-${6}`, ISBN: 6, author: 'ben', publish_date: 'test'}, {name: `name-${7}`, ISBN: 7, author: 'ben', publish_date: 'test'}, {name: `name-${8}`, ISBN: 8, author: 'ben', publish_date: 'test'}];
 
 const Books = () => {
   const classes = useStyles()
