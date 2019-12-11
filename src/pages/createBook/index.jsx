@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import PageWrapper from '../../components/pageWrapper'
 import { useHistory } from 'react-router-dom'
 import { fakeRequest } from '../../apiFetch'
+import { apiFetch } from 'src/apiFetch'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -38,7 +39,7 @@ export default function SignUp() {
   })
   const handleChange = (key) => e => setBook({ ...book, [key]: e.target.value })
   const saveBook = () => { // todo: handle
-    fakeRequest('/book', book).then(res => res.json()).then((json) => { // todo: POST
+    apiFetch('/book', 'POST', book).then(res => res.json()).then((json) => { // todo: POST
       history.push('/')
     })
 

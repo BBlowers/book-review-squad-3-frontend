@@ -17,7 +17,7 @@ const Books = () => {
   const [books, setBooks] = useState(null)
 
   useEffect(() => { // todo: handle
-    fakeRequest('/books', fakeBooks).then(res => res.json()).then((json) => {
+    apiFetch('/books').then(res => res.json()).then((json) => {
       setBooks(json)
     })
   })
