@@ -5,8 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import PageWrapper from '../../components/pageWrapper'
 import { useHistory } from 'react-router-dom'
-import { fakeRequest } from '../../apiFetch'
-import { apiFetch } from 'src/apiFetch'
+import { fakeRequest, apiFetch } from '../../apiFetch'
 
 const useStyles = makeStyles(theme => ({
   paper: {
